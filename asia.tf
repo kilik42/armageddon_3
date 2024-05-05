@@ -17,7 +17,12 @@ resource "google_compute_vpn_gateway" "asia_vpn_gateway" {
   region = var.asia_region
   network = google_compute_network.asia_vpc.id
 }
-
+# European VPN Gateway (HQ)
+resource "google_compute_vpn_gateway" "europe_vpn_gateway" {
+  name    = "europe-vpn-gateway"
+  network = google_compute_network.europe_vpc.id
+  region  = var.europe_region
+}
 # Example of VPN Tunnel configuration
 resource "google_compute_vpn_tunnel" "asia_to_europe_tunnel" {
   name          = "asia-to-europe-tunnel"

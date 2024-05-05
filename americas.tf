@@ -25,16 +25,16 @@ resource "google_compute_subnetwork" "america_subnet_2" {
 }
 
 # Peering connections to the European HQ VPC
-resource "google_compute_network_peering" "america_to_europe_1" {
+resource "google_compute_network_peering" "america_to_europe" {
   name         = "america-to-europe-1"
   network      = google_compute_network.america_vpc_1.id
   peer_network = google_compute_network.europe_vpc.self_link
 }
 
-resource "google_compute_network_peering" "america_to_europe_2" {
-  name         = "america-to-europe-2"
-  network      = google_compute_network.america_vpc_2.id
-  peer_network = google_compute_network.europe_vpc.self_link
+resource "google_compute_network_peering" "europe_to_america" {
+  name         = "europe-to-america-1"
+  network      = google_compute_network.europe_vpc.id
+  peer_network = google_compute_network.america_vpc_1.self_link
 }
 
 # Firewall rule to allow only port 80 traffic from Americas regions to European subnet
