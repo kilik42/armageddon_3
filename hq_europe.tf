@@ -19,7 +19,7 @@ resource "google_compute_instance" "europe_vm" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-10"
+      image = "debian-cloud/debian-11"
     }
   }
 

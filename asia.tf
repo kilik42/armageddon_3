@@ -29,9 +29,17 @@ resource "google_compute_vpn_tunnel" "asia_to_europe_tunnel" {
   region        = var.asia_region
   vpn_gateway   = google_compute_vpn_gateway.asia_vpn_gateway.id
   target_vpn_gateway = google_compute_vpn_gateway.europe_vpn_gateway.id 
-  shared_secret = "vpn-shared-secret"  # Replace with your own shared secret
+  shared_secret = sensitive("women_and_bears_belong_together" ) # Replace with your own shared secret
 }
 
+#tunnel for europe to asia
+resource "google_compute_vpn_tunnel" "europe_to_asia_tunnel" {
+  name          = "europe-to-asia-tunnel"
+  region        = var.europe_region
+  vpn_gateway   = google_compute_vpn_gateway.europe_vpn_gateway.id
+  target_vpn_gateway = google_compute_vpn_gateway.asia_vpn_gateway.id 
+  shared_secret = sensitive("abw_and_bears_belong_together" ) # Replace with your own shared secret
+}
 # Firewall rule to allow only port 3389 (RDP) traffic from Asia-Pacific region
 resource "google_compute_firewall" "allow_rdp_from_asia" {
   name    = "allow-rdp-from-asia"
