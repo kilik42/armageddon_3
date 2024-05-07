@@ -12,16 +12,16 @@ resource "google_compute_subnetwork" "america_subnet_1" {
 }
 
 # VPC and subnet for second Americas region (RFC 1918 "172.16." range)
-resource "google_compute_network" "america_vpc_2" {
-  name                    = "america-vpc-2"
-  auto_create_subnetworks = false
-}
+# resource "google_compute_network" "america_vpc_2" {
+#   name                    = "america-vpc-2"
+#   auto_create_subnetworks = false
+# }
 
 resource "google_compute_subnetwork" "america_subnet_2" {
   name          = "america-subnet-2"
   ip_cidr_range = "172.16.1.0/24"
   region        = var.america_region_2
-  network       = google_compute_network.america_vpc_2.id
+  network       = google_compute_network.america_vpc_1.id
 }
 
 # Peering connections to the European HQ VPC

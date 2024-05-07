@@ -12,9 +12,9 @@ output "america_vpc_1" {
   value = google_compute_network.america_vpc_1.name
 }
 
-output "america_vpc_2" {
-  value = google_compute_network.america_vpc_2.name
-}
+# output "america_vpc_2" {
+#   value = google_compute_network.america_vpc_2.name
+# }
 
 # Outputs for Asia-Pacific
 output "asia_vpc" {
