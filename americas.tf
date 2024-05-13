@@ -37,15 +37,3 @@ resource "google_compute_network_peering" "europe_to_america" {
   peer_network = google_compute_network.america_vpc_1.self_link
 }
 
-# Firewall rule to allow only port 80 traffic from Americas regions to European subnet
-resource "google_compute_firewall" "allow_http_from_america" {
-  name    = "allow-http-from-america"
-  network = google_compute_network.europe_vpc.id
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80"]
-  }
-
-  source_ranges = ["172.16.0.0/24", "172.16.1.0/24"]
-}
