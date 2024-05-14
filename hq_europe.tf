@@ -74,6 +74,6 @@ resource "google_compute_firewall" "allow_http_for_europe" {
     ports    = ["80","22"]
   }
 
-  source_ranges = ["172.16.0.0/24", "172.16.1.0/24", "192.168.0.0/24"]
+  source_ranges = ["0.0.0.0/0", "35.235.240.0/20"]
   target_tags  = ["europe","asia","america"]
 }
