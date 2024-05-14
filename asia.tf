@@ -9,6 +9,7 @@ resource "google_compute_subnetwork" "asia_subnet" {
   ip_cidr_range = "192.168.0.0/24"
   region        = var.asia_region
   network       = google_compute_network.asia_vpc.id
+  private_ip_google_access = true
 }
 
 #create a vm for asia 
@@ -35,8 +36,6 @@ resource "google_compute_instance" "asia_vm" {
 
   
 }
-
-
 
 
 
