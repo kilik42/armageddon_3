@@ -71,8 +71,9 @@ resource "google_compute_firewall" "allow_http_for_europe" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80"]
+    ports    = ["80","22"]
   }
 
   source_ranges = ["172.16.0.0/24", "172.16.1.0/24", "192.168.0.0/24"]
+  target_tags  = ["europe","asia","america"]
 }
